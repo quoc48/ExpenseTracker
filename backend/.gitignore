@@ -1,0 +1,23 @@
+# Environment variables and secrets
+.env*
+!.env.example
+
+# Supabase local development
+.branches
+.temp
+.vscode
+
+# Logs
+*.log
+
+# Database dumps
+*.dump
+*.sql.backup
+
+# macOS
+.DS_Store
+
+# Editor files
+*.swp
+*.swo
+*~
