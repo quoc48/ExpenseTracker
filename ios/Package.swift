@@ -7,8 +7,8 @@ let package = Package(
         .iOS(.v16)
     ],
     products: [
-        .library(
-            name: "ExpenseTracker",
+        .executable(
+            name: "ExpenseTrackerApp",
             targets: ["ExpenseTracker"]
         )
     ],
@@ -19,7 +19,7 @@ let package = Package(
         )
     ],
     targets: [
-        .target(
+        .executableTarget(
             name: "ExpenseTracker",
             dependencies: [
                 .product(name: "Supabase", package: "supabase-swift")

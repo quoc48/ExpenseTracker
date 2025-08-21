@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:ExpenseTracker}/ios",
+            "name": "Debug ExpenseTrackerApp (ios)",
+            "program": "${workspaceFolder:ExpenseTracker}/ios/.build/debug/ExpenseTrackerApp",
+            "preLaunchTask": "swift: Build Debug ExpenseTrackerApp (ios)"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:ExpenseTracker}/ios",
+            "name": "Release ExpenseTrackerApp (ios)",
+            "program": "${workspaceFolder:ExpenseTracker}/ios/.build/release/ExpenseTrackerApp",
+            "preLaunchTask": "swift: Build Release ExpenseTrackerApp (ios)"
+        }
+    ]
+}
