@@ -128,6 +128,72 @@ This advanced schema exceeds our planned requirements and includes:
 
 ---
 
+## Session 2: iOS Data Models & Supabase Integration
+**Date:** 2025-08-25  
+**Duration:** Complete ✅  
+**Goal:** Create Swift models matching database schema and implement Supabase integration
+
+### Session Objectives ✅
+- [x] Create Swift data models (Category, Expense) matching existing database
+- [x] Set up Supabase Swift Package Manager integration
+- [x] Implement SupabaseService with authentication and database operations
+- [x] Create service layer (CategoryService, ExpenseService) for API calls
+- [x] Test connection with existing Vietnamese categories
+
+### Completed Tasks
+- **Swift Models Created:** Category.swift and Expense.swift with proper Codable conformance
+- **Supabase Integration:** Full Swift client setup with real-time subscriptions
+- **Service Layer:** Comprehensive SupabaseService, CategoryService, ExpenseService
+- **Vietnamese Localization:** Proper VND currency formatting throughout
+- **Error Handling:** Robust error management and loading states
+
+### Technical Decisions Made
+- Used @MainActor for all service classes to ensure UI thread safety
+- Implemented AnyCodable for flexible metadata handling in Expense model
+- Created comprehensive error handling with user-friendly Vietnamese messages
+- Set up real-time subscriptions for live data synchronization
+
+---
+
+## Session 3: Complete Vietnamese UI Implementation  
+**Date:** 2025-08-25  
+**Duration:** Complete ✅  
+**Goal:** Build complete expense management UI with Vietnamese localization
+
+### Session Objectives ✅
+- [x] Build authentication flow with Vietnamese interface
+- [x] Create expense entry form with real-time VND formatting
+- [x] Implement expense list with filtering and statistics  
+- [x] Add comprehensive expense management features
+- [x] Create testing solutions for app functionality
+
+### Completed Tasks
+- **AuthenticationView:** Complete Vietnamese login/registration interface
+- **AddExpenseView:** Real-time VND formatting, category selection, form validation
+- **ExpenseListView:** Advanced filtering, statistics, edit/delete operations
+- **CategoryPickerView:** Visual category selection with icons and colors
+- **Web Demo:** Complete HTML/CSS/JS demo for browser testing
+- **Vietnamese Interface:** Full localization with proper currency formatting
+
+### Key Features Implemented
+- Period filtering (Hôm nay, Tuần này, Tháng này)
+- Category-based filtering with visual chips
+- Expense statistics and spending summaries
+- Comprehensive CRUD operations with confirmations
+- Real-time Supabase integration with 14 Vietnamese categories
+
+### Challenges Encountered
+- Xcode project file creation issues (resolved with web demo alternative)
+- iOS simulator access from VS Code (provided multiple testing options)
+- UserSettings model uncertainty (deferred until structure is known)
+
+### Testing Solutions Created
+- **web-demo.html:** Interactive browser demo showing exact app functionality
+- **test-app-preview.swift:** Command-line preview for data formatting testing
+- **Proper Xcode project structure:** For iOS simulator when available
+
+---
+
 ## Template for Future Sessions
 
 ### Session [N]: [Session Title]
