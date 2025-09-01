@@ -1,9 +1,9 @@
 # ExpenseTracker - Current State
 
 ## Current Progress
-**Last Updated:** 2025-08-25  
-**Current Session:** Session 4 - Basic Reporting  
-**Overall Progress:** 75% (Foundation + Data Models + UI + Vietnamese Interface complete)
+**Last Updated:** 2025-08-28  
+**Current Session:** Session 4 Complete + Chi Tiêu Redesign ✅ COMPLETE  
+**Overall Progress:** 95% (Foundation + Data Models + UI + Vietnamese Interface + Reporting + Dashboard Layout complete)
 
 ## Completed Tasks ✅
 
@@ -42,12 +42,41 @@
 - [x] Built web-demo.html for browser-based testing and demonstration
 - [x] Implemented complete Vietnamese localization throughout the app
 
+### Session 4: Basic Reporting ✅ COMPLETE
+- [x] Created DailySummaryView with today's spending breakdown and category analysis
+- [x] Built BudgetComparisonView with monthly budget vs actual spending tracking
+- [x] Implemented CategoryAnalyticsView with pie charts and category ranking
+- [x] Created DateRangePickerView with 11 preset options and custom date selection
+- [x] Built ReportsDashboardView as comprehensive reporting hub with 4 report types
+- [x] Updated ContentView with new ReportsTabView for seamless navigation
+- [x] Added budget setup functionality with Vietnamese currency suggestions
+- [x] Implemented spending alerts and progress visualization with color-coded indicators
+- [x] Created category spending trends with weekly/monthly comparisons
+- [x] Added export functionality placeholders (PDF/Excel) for future implementation
+
+### Chi Tiêu Dashboard Redesign ✅ COMPLETE
+- [x] Redesigned Chi Tiêu page from list view to dashboard layout per user requirements
+- [x] Created DashboardExpenseView.swift with 4 main sections (Header, Quick Stats, Category Highlight, Recent Transactions)
+- [x] Implemented exact design specifications: SF Pro Text font, specific hex colors (#2C2C2C, #2F51FF, #F5F6F7)
+- [x] Added linear gradient support and 8px corner radius styling
+- [x] Built header section with monthly total and progress placeholder for future implementation
+- [x] Created today's expense quick stats with yesterday link placeholder
+- [x] Implemented category highlight showing top spending category for current month
+- [x] Added recent transactions section displaying 10 latest items with view all placeholder
+- [x] Connected real expense data loading with monthly/daily calculations and category analysis
+- [x] Updated ContentView.swift to use new DashboardExpenseView instead of ExpenseListView
+- [x] Added Color hex extension and Calendar startOfMonth extension for proper functionality
+- [x] Maintained Vietnamese localization and VND currency formatting throughout
+- [x] Tested dashboard functionality with real data successfully
+
 ## Current Status 🚧
 
-### Active Work (Session 4: Basic Reporting)
-- **Current Focus:** Implementing comprehensive reporting and analytics features
-- **Files Being Modified:** New reporting views and dashboard components
-- **Next Immediate Task:** Create daily expense summary view with Vietnamese interface
+### Dashboard Redesign Complete - Ready for Next Features
+- **Current Focus:** Chi Tiêu dashboard redesign completed successfully with exact design specifications
+- **Files Created:** DashboardExpenseView.swift (complete dashboard layout), Updated ContentView.swift
+- **New Features:** Header with monthly overview, Today stats, Category highlights, Recent transactions (10 items)
+- **Design Implementation:** SF Pro Text font, Linear gradients (#2F51FF to #0E33F3), Hex colors (#2C2C2C, #F5F6F7), 8px corner radius
+- **Next Features:** Progress chart in header, Yesterday link, View all transactions navigation (per user's step-by-step approach)
 
 ### Project Structure Status
 ```

@@ -12,8 +12,8 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f2f2f7;
+            font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #F5F6F7;
             padding: 20px;
         }
         
@@ -30,7 +30,7 @@
         .screen {
             width: 100%;
             height: 100%;
-            background: #fff;
+            background: #F5F6F7;
             border-radius: 30px;
             overflow: hidden;
             position: relative;
@@ -38,7 +38,7 @@
         
         .status-bar {
             height: 44px;
-            background: #fff;
+            background: #F5F6F7;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -61,6 +61,173 @@
             justify-content: space-around;
             align-items: center;
             padding-bottom: 20px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+        
+        .report-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+        
+        .report-type-btn {
+            background: #f2f2f7;
+            border: none;
+            border-radius: 12px;
+            padding: 10px 16px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #000;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            min-width: 70px;
+        }
+        
+        .report-type-btn.active {
+            background: #007aff;
+            color: white;
+        }
+        
+        .report-icon {
+            font-size: 18px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-card {
+            background: #f2f2f7;
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+        }
+        
+        .stat-icon {
+            font-size: 18px;
+            color: #007aff;
+            margin-bottom: 4px;
+        }
+        
+        .stat-value {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+        
+        .stat-label {
+            font-size: 10px;
+            color: #8e8e93;
+        }
+        
+        .budget-progress {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: #e5e5ea;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 12px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: #34c759;
+            transition: width 0.5s ease;
+        }
+        
+        .progress-fill.warning {
+            background: #ff9500;
+        }
+        
+        .progress-fill.danger {
+            background: #ff3b30;
+        }
+        
+        .category-chart {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        
+        .pie-chart {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #007aff 0deg 108deg,
+                #34c759 108deg 180deg,
+                #ff9500 180deg 252deg,
+                #ff3b30 252deg 306deg,
+                #5856d6 306deg 360deg
+            );
+            margin: 16px auto;
+        }
+        
+        .chart-legend {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 16px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+        }
+        
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+        
+        .date-filter {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            overflow-x: auto;
+            padding: 8px 0;
+        }
+        
+        .date-btn {
+            background: #f2f2f7;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+        
+        .date-btn.active {
+            background: #007aff;
+            color: white;
         }
         
         .tab-item {
@@ -297,6 +464,190 @@
             cursor: pointer;
             font-size: 14px;
         }
+        
+        /* Dashboard Styles */
+        .dashboard-header {
+            background: #2C2C2C;
+            color: white;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+        }
+        
+        .month-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .month-label {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .nav-hint {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .monthly-total {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .budget-progress-section {
+            margin-top: 16px;
+        }
+        
+        .budget-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 4px;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #2F51FF 0%, #0E33F3 100%);
+            border-radius: 4px;
+        }
+        
+        .today-stats, .category-highlight, .recent-transactions {
+            background: white;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+        }
+        
+        .section-header-today, .section-header-category, .section-header-transactions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .section-header-today h2, .section-header-category h2, .section-header-transactions h2 {
+            font-size: 24px;
+            font-weight: 500;
+            color: #000000;
+            margin: 0;
+        }
+        
+        .nav-link {
+            font-size: 16px;
+            color: #2F51FF;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .today-amount {
+            font-size: 32px;
+            font-weight: bold;
+            color: #000000;
+        }
+        
+        .top-category {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .category-icon {
+            font-size: 20px;
+            width: 40px;
+            height: 40px;
+            background: #F5F6F7;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .category-info {
+            flex: 1;
+        }
+        
+        .category-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #000000;
+        }
+        
+        .category-desc {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .category-amount {
+            font-size: 20px;
+            font-weight: bold;
+            color: #000000;
+        }
+        
+        .transaction-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .transaction-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 4px 0;
+        }
+        
+        .transaction-icon {
+            font-size: 18px;
+            width: 40px;
+            height: 40px;
+            background: #F5F6F7;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .transaction-info {
+            flex: 1;
+        }
+        
+        .transaction-desc {
+            font-size: 16px;
+            font-weight: 500;
+            color: #000000;
+        }
+        
+        .transaction-category {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .transaction-meta {
+            text-align: right;
+        }
+        
+        .transaction-amount {
+            font-size: 16px;
+            font-weight: 600;
+            color: #000000;
+        }
+        
+        .transaction-time {
+            font-size: 12px;
+            color: #666;
+        }
     </style>
 </head>
 <body>
@@ -333,78 +684,96 @@
             </div>
             
             <!-- Main App Screen -->
-            <div id="main-screen" class="content hidden">
+            <div id="main-screen" class="content">
                 <div class="header">Chi Tiêu</div>
                 
-                <!-- Summary -->
-                <div class="summary-card">
-                    <div class="summary-amount">₫455.000</div>
-                    <div class="summary-subtitle">Tổng chi tiêu tháng này • 5 giao dịch</div>
-                </div>
-                
-                <!-- Filters -->
-                <div class="filter-chips">
-                    <div class="chip active">Tháng này</div>
-                    <div class="chip">Tuần này</div>
-                    <div class="chip">Hôm nay</div>
-                </div>
-                
-                <div class="filter-chips">
-                    <div class="chip active">Tất cả</div>
-                    <div class="chip">🍜</div>
-                    <div class="chip">🛒</div>
-                    <div class="chip">👔</div>
-                    <div class="chip">🚌</div>
-                </div>
-                
-                <!-- Expenses List -->
-                <div class="section-title">Chi tiêu gần đây</div>
-                
-                <div class="expense-item">
-                    <div class="expense-icon">🍜</div>
-                    <div class="expense-details">
-                        <div class="expense-title">Cơm trưa tại nhà hàng</div>
-                        <div class="expense-category">Thực phẩm • Hôm nay</div>
+                <!-- Dashboard Layout -->
+                <!-- 1. Header Section (Monthly Overview) -->
+                <div class="dashboard-header">
+                    <div class="month-info">
+                        <div class="month-label">Tháng 8</div>
+                        <div class="nav-hint">Tháng trước ➤</div>
                     </div>
-                    <div class="expense-amount">₫45.000</div>
+                    <div class="monthly-total">₫1.250.000</div>
+                    <div class="budget-progress-section">
+                        <div class="budget-info">
+                            <span>So với ngân sách</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%;"></div>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="expense-item">
-                    <div class="expense-icon">🚌</div>
-                    <div class="expense-details">
-                        <div class="expense-title">Xe bus đi làm</div>
-                        <div class="expense-category">Giao thông • Hôm nay</div>
+                <!-- 2. Today Stats Section -->
+                <div class="today-stats">
+                    <div class="section-header-today">
+                        <h2>Hôm nay</h2>
+                        <div class="nav-link">Hôm qua ➤</div>
                     </div>
-                    <div class="expense-amount">₫25.000</div>
+                    <div class="today-amount">₫45.000</div>
                 </div>
                 
-                <div class="expense-item">
-                    <div class="expense-icon">👔</div>
-                    <div class="expense-details">
-                        <div class="expense-title">Áo sơ mi mới</div>
-                        <div class="expense-category">Thời trang • Hôm qua</div>
+                <!-- 3. Category Highlight Section -->
+                <div class="category-highlight">
+                    <div class="section-header-category">
+                        <h2>Danh mục nổi bật</h2>
+                        <div class="nav-link">Chi tiết ➤</div>
                     </div>
-                    <div class="expense-amount">₫150.000</div>
+                    <div class="top-category">
+                        <div class="category-icon">🍜</div>
+                        <div class="category-info">
+                            <div class="category-name">Thực phẩm</div>
+                            <div class="category-desc">Danh mục chi nhiều nhất</div>
+                        </div>
+                        <div class="category-amount">₫485.000</div>
+                    </div>
                 </div>
                 
-                <div class="expense-item">
-                    <div class="expense-icon">🛒</div>
-                    <div class="expense-details">
-                        <div class="expense-title">Mua thực phẩm tuần</div>
-                        <div class="expense-category">Tạp hoá • 2 ngày trước</div>
+                <!-- 4. Recent Transactions Section -->
+                <div class="recent-transactions">
+                    <div class="section-header-transactions">
+                        <h2>Chi tiêu gần đây</h2>
+                        <div class="nav-link">Tất cả ➤</div>
                     </div>
-                    <div class="expense-amount">₫200.000</div>
+                    <div class="transaction-list">
+                        <div class="transaction-item">
+                            <div class="transaction-icon">🍜</div>
+                            <div class="transaction-info">
+                                <div class="transaction-desc">Cơm trưa tại nhà hàng</div>
+                                <div class="transaction-category">Thực phẩm</div>
+                            </div>
+                            <div class="transaction-meta">
+                                <div class="transaction-amount">₫45.000</div>
+                                <div class="transaction-time">14:30</div>
+                            </div>
+                        </div>
+                        <div class="transaction-item">
+                            <div class="transaction-icon">🚌</div>
+                            <div class="transaction-info">
+                                <div class="transaction-desc">Xe bus đi làm</div>
+                                <div class="transaction-category">Giao thông</div>
+                            </div>
+                            <div class="transaction-meta">
+                                <div class="transaction-amount">₫25.000</div>
+                                <div class="transaction-time">Hôm qua</div>
+                            </div>
+                        </div>
+                        <div class="transaction-item">
+                            <div class="transaction-icon">👔</div>
+                            <div class="transaction-info">
+                                <div class="transaction-desc">Áo sơ mi mới</div>
+                                <div class="transaction-category">Thời trang</div>
+                            </div>
+                            <div class="transaction-meta">
+                                <div class="transaction-amount">₫150.000</div>
+                                <div class="transaction-time">Hôm qua</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="expense-item">
-                    <div class="expense-icon">☕</div>
-                    <div class="expense-details">
-                        <div class="expense-title">Cà phê với bạn</div>
-                        <div class="expense-category">Cà phê • 3 ngày trước</div>
-                    </div>
-                    <div class="expense-amount">₫35.000</div>
-                </div>
-            </div>
             
             <!-- Category Screen -->
             <div id="category-screen" class="content hidden">
@@ -458,19 +827,261 @@
                 </div>
             </div>
             
+            <!-- Reports Screen -->
+            <div id="reports-screen" class="content hidden">
+                <div class="header">Báo Cáo</div>
+                
+                <!-- Report Type Selector -->
+                <div class="report-selector">
+                    <button class="report-type-btn active" onclick="showReportType('dashboard')">
+                        <div class="report-icon">📊</div>
+                        <div>Tổng Quan</div>
+                    </button>
+                    <button class="report-type-btn" onclick="showReportType('daily')">
+                        <div class="report-icon">📅</div>
+                        <div>Hôm Nay</div>
+                    </button>
+                    <button class="report-type-btn" onclick="showReportType('budget')">
+                        <div class="report-icon">💰</div>
+                        <div>Ngân Sách</div>
+                    </button>
+                    <button class="report-type-btn" onclick="showReportType('analytics')">
+                        <div class="report-icon">🥧</div>
+                        <div>Phân Tích</div>
+                    </button>
+                </div>
+                
+                <!-- Dashboard Report Content -->
+                <div id="dashboard-report" class="report-content">
+                    <!-- Quick Stats -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">💳</div>
+                            <div class="stat-value">₫2.750.000</div>
+                            <div class="stat-label">Tổng Chi</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">📋</div>
+                            <div class="stat-value">18</div>
+                            <div class="stat-label">Giao Dịch</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">📅</div>
+                            <div class="stat-value">₫92K</div>
+                            <div class="stat-label">TB/Ngày</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Date Filter -->
+                    <div class="date-filter">
+                        <button class="date-btn">Hôm nay</button>
+                        <button class="date-btn active">Tháng này</button>
+                        <button class="date-btn">3 tháng</button>
+                        <button class="date-btn">Năm này</button>
+                        <button class="date-btn">Tùy chỉnh</button>
+                    </div>
+                    
+                    <!-- Top Categories -->
+                    <div class="expense-section">
+                        <div class="section-header">
+                            <h3>Top Danh Mục Chi Tiêu</h3>
+                        </div>
+                        <div class="expense-item">
+                            <div class="expense-icon">🍜</div>
+                            <div class="expense-details">
+                                <div class="expense-desc">Thực phẩm</div>
+                                <div class="expense-meta">8 giao dịch • 45.2%</div>
+                            </div>
+                            <div class="expense-amount">₫1.245.000</div>
+                        </div>
+                        <div class="expense-item">
+                            <div class="expense-icon">🚌</div>
+                            <div class="expense-details">
+                                <div class="expense-desc">Giao thông</div>
+                                <div class="expense-meta">5 giao dịch • 18.1%</div>
+                            </div>
+                            <div class="expense-amount">₫498.000</div>
+                        </div>
+                        <div class="expense-item">
+                            <div class="expense-icon">🛒</div>
+                            <div class="expense-details">
+                                <div class="expense-desc">Tạp hoá</div>
+                                <div class="expense-meta">3 giao dịch • 14.5%</div>
+                            </div>
+                            <div class="expense-amount">₫399.000</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Daily Report Content -->
+                <div id="daily-report" class="report-content hidden">
+                    <div class="summary-card">
+                        <div class="summary-amount">₫127.500</div>
+                        <div class="summary-label">Chi Tiêu Hôm Nay</div>
+                        <div style="margin-top: 8px; font-size: 14px;">3 giao dịch</div>
+                    </div>
+                    
+                    <!-- Daily Progress -->
+                    <div class="budget-progress">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span style="font-size: 14px; font-weight: 600;">So với trung bình</span>
+                            <span style="font-size: 12px; color: #34c759;">Tiết kiệm (68%)</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 68%;"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Today's Categories -->
+                    <div class="expense-section">
+                        <div class="section-header">
+                            <h3>Danh Mục Hôm Nay</h3>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <div style="background: #f2f2f7; border-radius: 8px; padding: 12px; text-align: center;">
+                                <div style="font-size: 20px; margin-bottom: 4px;">🍜</div>
+                                <div style="font-size: 12px; font-weight: 600;">Thực phẩm</div>
+                                <div style="font-size: 10px; color: #8e8e93;">₫85.000</div>
+                            </div>
+                            <div style="background: #f2f2f7; border-radius: 8px; padding: 12px; text-align: center;">
+                                <div style="font-size: 20px; margin-bottom: 4px;">☕</div>
+                                <div style="font-size: 12px; font-weight: 600;">Cà phê</div>
+                                <div style="font-size: 10px; color: #8e8e93;">₫42.500</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Budget Report Content -->
+                <div id="budget-report" class="report-content hidden">
+                    <div class="budget-progress">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span style="font-size: 16px; font-weight: 600;">Ngân Sách Tháng</span>
+                            <span style="font-size: 14px; color: #8e8e93;">₫10.000.000</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                            <span style="font-size: 16px; font-weight: 600; color: #007aff;">Đã Chi</span>
+                            <span style="font-size: 14px; color: #007aff;">₫2.750.000</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 27.5%;"></div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-top: 8px;">
+                            <span style="font-size: 14px; color: #34c759;">Tốt - Trong tầm kiểm soát</span>
+                            <span style="font-size: 12px; color: #8e8e93;">27.5% sử dụng</span>
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                        <div style="background: white; border-radius: 12px; padding: 16px;">
+                            <div style="font-size: 12px; color: #8e8e93; margin-bottom: 4px;">Còn Lại</div>
+                            <div style="font-size: 18px; font-weight: bold; color: #34c759;">₫7.250.000</div>
+                        </div>
+                        <div style="background: white; border-radius: 12px; padding: 16px;">
+                            <div style="font-size: 12px; color: #8e8e93; margin-bottom: 4px;">Còn 15 ngày</div>
+                            <div style="font-size: 18px; font-weight: bold; color: #007aff;">₫483K/ngày</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Budget Alerts -->
+                    <div style="background: #e3f2fd; border-radius: 8px; padding: 12px; margin-bottom: 16px;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span style="color: #007aff;">ℹ️</span>
+                            <div>
+                                <div style="font-size: 12px; font-weight: 600; color: #007aff;">Chi Tiêu Cao Hôm Nay</div>
+                                <div style="font-size: 11px; color: #007aff;">Hôm nay bạn chi ₫127.500, cao hơn trung bình</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Analytics Report Content -->
+                <div id="analytics-report" class="report-content hidden">
+                    <div class="category-chart">
+                        <h3 style="margin-bottom: 16px;">Biểu Đồ Chi Tiêu</h3>
+                        <div class="pie-chart"></div>
+                        <div class="chart-legend">
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #007aff;"></div>
+                                <span>Thực phẩm (45.2%)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #34c759;"></div>
+                                <span>Giao thông (18.1%)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #ff9500;"></div>
+                                <span>Tạp hoá (14.5%)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #ff3b30;"></div>
+                                <span>Y tế (12.0%)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #5856d6;"></div>
+                                <span>Giải trí (10.2%)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Category Rankings -->
+                    <div class="expense-section">
+                        <div class="section-header">
+                            <h3>Xếp Hạng Danh Mục</h3>
+                        </div>
+                        <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                            <div style="width: 20px; text-align: center; font-weight: bold; color: #ff9500; margin-right: 12px;">1</div>
+                            <div style="font-size: 20px; margin-right: 12px;">🍜</div>
+                            <div style="flex: 1;">
+                                <div style="font-size: 14px; font-weight: 600;">Thực phẩm</div>
+                                <div style="font-size: 12px; color: #8e8e93;">8 giao dịch</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-size: 14px; font-weight: 600;">₫1.245.000</div>
+                                <div style="font-size: 12px; color: #007aff;">45.2%</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                            <div style="width: 20px; text-align: center; font-weight: bold; color: #8e8e93; margin-right: 12px;">2</div>
+                            <div style="font-size: 20px; margin-right: 12px;">🚌</div>
+                            <div style="flex: 1;">
+                                <div style="font-size: 14px; font-weight: 600;">Giao thông</div>
+                                <div style="font-size: 12px; color: #8e8e93;">5 giao dịch</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-size: 14px; font-weight: 600;">₫498.000</div>
+                                <div style="font-size: 12px; color: #007aff;">18.1%</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <div style="width: 20px; text-align: center; font-weight: bold; color: #ff9500; margin-right: 12px;">3</div>
+                            <div style="font-size: 20px; margin-right: 12px;">🛒</div>
+                            <div style="flex: 1;">
+                                <div style="font-size: 14px; font-weight: 600;">Tạp hoá</div>
+                                <div style="font-size: 12px; color: #8e8e93;">3 giao dịch</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-size: 14px; font-weight: 600;">₫399.000</div>
+                                <div style="font-size: 12px; color: #007aff;">14.5%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <!-- Tab Bar -->
             <div id="tab-bar" class="tab-bar hidden">
                 <a href="#" class="tab-item active" onclick="showScreen('main')">
                     <div class="tab-icon">💳</div>
                     <div>Chi Tiêu</div>
                 </a>
+                <a href="#" class="tab-item" onclick="showScreen('reports')">
+                    <div class="tab-icon">📊</div>
+                    <div>Báo Cáo</div>
+                </a>
                 <a href="#" class="tab-item" onclick="showScreen('category')">
                     <div class="tab-icon">🏷️</div>
                     <div>Danh Mục</div>
-                </a>
-                <a href="#" class="tab-item">
-                    <div class="tab-icon">📊</div>
-                    <div>Báo Cáo</div>
                 </a>
                 <a href="#" class="tab-item">
                     <div class="tab-icon">⚙️</div>
@@ -487,7 +1098,10 @@
         <h3>🎯 ExpenseTracker Demo</h3>
         <p>This demonstrates your fully functional Vietnamese expense tracking app!</p>
         <p style="margin-top: 10px;">
-            ✅ Vietnamese UI | ✅ VND Currency | ✅ Real Categories | ✅ Complete Workflow
+            ✅ Vietnamese UI | ✅ VND Currency | ✅ Real Categories | ✅ Complete Workflow | ✅ Advanced Reporting
+        </p>
+        <p style="margin-top: 8px; font-size: 14px;">
+            📊 Daily Summary | 💰 Budget Tracking | 🥧 Category Analytics | 📅 Date Filtering
         </p>
     </div>
 
@@ -503,6 +1117,7 @@
             // Hide all screens
             document.getElementById('main-screen').classList.add('hidden');
             document.getElementById('category-screen').classList.add('hidden');
+            document.getElementById('reports-screen').classList.add('hidden');
             
             // Show selected screen
             document.getElementById(screenName + '-screen').classList.remove('hidden');
@@ -510,6 +1125,18 @@
             // Update tab active state
             document.querySelectorAll('.tab-item').forEach(tab => tab.classList.remove('active'));
             event.target.closest('.tab-item').classList.add('active');
+        }
+        
+        function showReportType(reportType) {
+            // Hide all report contents
+            document.querySelectorAll('.report-content').forEach(content => content.classList.add('hidden'));
+            
+            // Show selected report content
+            document.getElementById(reportType + '-report').classList.remove('hidden');
+            
+            // Update button active state
+            document.querySelectorAll('.report-type-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.closest('.report-type-btn').classList.add('active');
         }
         
         function selectCategory(icon, name) {
