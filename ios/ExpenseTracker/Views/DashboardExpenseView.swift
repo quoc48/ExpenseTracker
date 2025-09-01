@@ -25,10 +25,13 @@ struct DashboardExpenseView: View {
                     // 2. Quick Stats Section (Today)
                     todayStatsSection
                     
-                    // 3. Category Highlight Section
-                    categoryHighlightSection
+                    // 3. Category Title
+                    categoryTitleSection
                     
-                    // 4. Recent Transactions Section
+                    // 4. Category Card
+                    categoryCardSection
+                    
+                    // 5. Recent Transactions Section
                     recentTransactionsSection
                 }
                 .padding(.horizontal, 16)
@@ -72,31 +75,30 @@ struct DashboardExpenseView: View {
     // MARK: - Header Section
     
     private var headerSection: some View {
-        VStack(spacing: 16) {
-            HStack {
-                Text("Tháng \(currentMonth)")
-                    .font(.custom("SF Pro Text", size: 18))
-                    .fontWeight(.semibold)
-                    .foregroundColor(.white)
-                
-                Spacer()
-                
-                // Navigation arrows placeholder for later
-                HStack(spacing: 8) {
-                    Button(action: {}) {
-                        Text("Tháng trước")
-                            .font(.custom("SF Pro Text", size: 14))
-                            .foregroundColor(.white.opacity(0.8))
-                    }
+        VStack(spacing: 0) {
+            // Top dark section with month and total
+            VStack(spacing: 12) {
+                HStack {
+                    Text("Tháng \(currentMonth)")
+                        .font(.custom("SF Pro Text", size: 18))
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
                     
-                    Image(systemName: "chevron.right")
-                        .font(.caption)
-                        .foregroundColor(.white.opacity(0.6))
+                    Spacer()
+                    
+                    Button(action: {}) {
+                        HStack(spacing: 4) {
+                            Text("Tháng trước")
+                                .font(.custom("SF Pro Text", size: 14))
+                                .foregroundColor(.white.opacity(0.8))
+                            
+                            Image(systemName: "chevron.right")
+                                .font(.caption)
+                                .foregroundColor(.white.opacity(0.6))
+                        }
+                    }
                 }
-            }
-            
-            // Monthly Total
-            VStack(alignment: .leading, spacing: 8) {
+                
                 HStack {
                     Text(formatVND(monthlyTotal))
                         .font(.custom("SF Pro Text", size: 32))
@@ -106,63 +108,69 @@ struct DashboardExpenseView: View {
                     Spacer()
                 }
                 
-                // Progress Bar Placeholder
-                VStack(alignment: .leading, spacing: 4) {
-                    HStack {
-                        Text("So với ngân sách")
-                            .font(.custom("SF Pro Text", size: 14))
-                            .foregroundColor(.white.opacity(0.8))
-                        
-                        Spacer()
-                        
-                        Text("60%") // Placeholder
-                            .font(.custom("SF Pro Text", size: 14))
-                            .foregroundColor(.white)
-                    }
+                HStack {
+                    Text("So với ngân sách")
+                        .font(.custom("SF Pro Text", size: 14))
+                        .foregroundColor(.white.opacity(0.8))
                     
-                    // Progress bar
-                    GeometryReader { geometry in
-                        ZStack(alignment: .leading) {
-                            Rectangle()
-                                .frame(height: 8)
-                                .foregroundColor(.white.opacity(0.2))
-                                .cornerRadius(4)
-                            
-                            Rectangle()
-                                .frame(width: geometry.size.width * 0.6, height: 8) // 60% progress
-                                .foregroundColor(.white)
-                                .cornerRadius(4)
-                        }
-                    }
-                    .frame(height: 8)
+                    Spacer()
+                    
+                    Text("60%")
+                        .font(.custom("SF Pro Text", size: 14))
+                        .foregroundColor(.white)
                 }
             }
+            .padding(16)
+            .background(Color(hex: "2C2C2C"))
+            
+            // Blue progress chart section
+            HStack {
+                Rectangle()
+                    .frame(height: 20)
+                    .foregroundColor(.blue)
+                
+                Rectangle()
+                    .frame(height: 20)
+                    .foregroundColor(.blue.opacity(0.7))
+                
+                Rectangle()
+                    .frame(height: 20)
+                    .foregroundColor(.blue.opacity(0.5))
+                
+                Rectangle()
+                    .frame(height: 20)
+                    .foregroundColor(.blue.opacity(0.3))
+            }
+            .background(Color.white.opacity(0.1))
         }
-        .padding(16)
-        .background(Color(hex: "2C2C2C"))
+        .frame(maxWidth: .infinity)
+        .frame(height: 175)
         .cornerRadius(8)
+        .clipped()
     }
     
     // MARK: - Today Stats Section
     
     private var todayStatsSection: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Text("Hôm nay")
-                    .font(.custom("SF Pro Text", size: 24))
+                    .font(.custom("SF Pro Text", size: 18))
                     .fontWeight(.medium)
                     .foregroundColor(Color(hex: "000000"))
                 
                 Spacer()
                 
                 Button(action: {}) {
-                    Text("Hôm qua")
-                        .font(.custom("SF Pro Text", size: 16))
-                        .foregroundColor(Color(hex: "2F51FF"))
-                    
-                    Image(systemName: "chevron.right")
-                        .font(.caption)
-                        .foregroundColor(Color(hex: "2F51FF"))
+                    HStack(spacing: 4) {
+                        Text("Hôm qua")
+                            .font(.custom("SF Pro Text", size: 14))
+                            .foregroundColor(Color(hex: "000000"))
+                        
+                        Image(systemName: "chevron.right")
+                            .font(.caption)
+                            .foregroundColor(Color(hex: "000000"))
+                    }
                 }
             }
             
@@ -171,82 +179,88 @@ struct DashboardExpenseView: View {
                 .fontWeight(.bold)
                 .foregroundColor(Color(hex: "000000"))
         }
-        .padding(16)
-        .background(Color.white)
+        .padding(15)
+        .frame(maxWidth: .infinity, minHeight: 100)
+        .background(
+            ZStack {
+                Color.white
+                
+                // Diagonal striped pattern using rectangles
+                HStack(spacing: 2) {
+                    ForEach(0..<50, id: \.self) { i in
+                        Rectangle()
+                            .fill(i % 2 == 0 ? Color.blue.opacity(0.1) : Color.pink.opacity(0.1))
+                            .frame(width: 10)
+                            .rotationEffect(.degrees(45))
+                    }
+                }
+                .clipped()
+            }
+        )
         .cornerRadius(8)
     }
     
-    // MARK: - Category Highlight Section
+    // MARK: - Category Title Section
     
-    private var categoryHighlightSection: some View {
-        VStack(alignment: .leading, spacing: 16) {
+    private var categoryTitleSection: some View {
+        HStack {
+            Text("Danh mục nổi bật tháng 8")
+                .font(.custom("SF Pro Text", size: 18))
+                .fontWeight(.medium)
+                .foregroundColor(Color(hex: "000000"))
+            
+            Spacer()
+        }
+        .padding(.horizontal, 0)
+    }
+    
+    // MARK: - Category Card Section
+    
+    private var categoryCardSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            // Top row: (icon + category name) with auto spacing to link
             HStack {
-                Text("Danh mục nổi bật")
-                    .font(.custom("SF Pro Text", size: 24))
-                    .fontWeight(.medium)
-                    .foregroundColor(Color(hex: "000000"))
+                // Icon and category name grouped together with 4px spacing
+                HStack(spacing: 4) {
+                    ZStack {
+                        Circle()
+                            .fill(Color(hex: "000000"))
+                            .frame(width: 40, height: 40)
+                        
+                        Image(systemName: "star.fill")
+                            .font(.system(size: 18))
+                            .foregroundColor(.white)
+                    }
+                    
+                    Text("Thực phẩm")
+                        .font(.custom("SF Pro Text", size: 18))
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color(hex: "000000"))
+                }
                 
                 Spacer()
                 
                 Button(action: {}) {
-                    Text("Chi tiết")
-                        .font(.custom("SF Pro Text", size: 16))
-                        .foregroundColor(Color(hex: "2F51FF"))
-                    
-                    Image(systemName: "chevron.right")
-                        .font(.caption)
-                        .foregroundColor(Color(hex: "2F51FF"))
+                    HStack(spacing: 4) {
+                        Text("Chi tiết")
+                            .font(.custom("SF Pro Text", size: 16))
+                            .foregroundColor(Color(hex: "000000"))
+                        
+                        Image(systemName: "chevron.right")
+                            .font(.caption)
+                            .foregroundColor(Color(hex: "000000"))
+                    }
                 }
             }
             
-            if let category = topCategory {
-                HStack(spacing: 12) {
-                    Text(category.icon)
-                        .font(.title)
-                        .frame(width: 40, height: 40)
-                        .background(Color(hex: "F5F6F7"))
-                        .cornerRadius(8)
-                    
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(category.name)
-                            .font(.custom("SF Pro Text", size: 18))
-                            .fontWeight(.semibold)
-                            .foregroundColor(Color(hex: "000000"))
-                        
-                        Text("Danh mục chi nhiều nhất")
-                            .font(.custom("SF Pro Text", size: 14))
-                            .foregroundColor(.secondary)
-                    }
-                    
-                    Spacer()
-                    
-                    Text(formatVND(category.amount))
-                        .font(.custom("SF Pro Text", size: 20))
-                        .fontWeight(.bold)
-                        .foregroundColor(Color(hex: "000000"))
-                }
-            } else {
-                HStack(spacing: 12) {
-                    Circle()
-                        .fill(Color(hex: "F5F6F7"))
-                        .frame(width: 40, height: 40)
-                    
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("Chưa có dữ liệu")
-                            .font(.custom("SF Pro Text", size: 18))
-                            .fontWeight(.semibold)
-                            .foregroundColor(Color(hex: "000000"))
-                        
-                        Text("Thêm chi tiêu để xem thống kê")
-                            .font(.custom("SF Pro Text", size: 14))
-                            .foregroundColor(.secondary)
-                    }
-                    
-                    Spacer()
-                }
-            }
+            // Bottom row: money amount with 12px spacing
+            Text("₫5,857,231")
+                .font(.custom("SF Pro Text", size: 32))
+                .fontWeight(.bold)
+                .foregroundColor(Color(hex: "000000"))
         }
         .padding(16)
+        .frame(maxWidth: .infinity)
         .background(Color.white)
         .cornerRadius(8)
     }
@@ -266,11 +280,11 @@ struct DashboardExpenseView: View {
                 Button(action: {}) {
                     Text("Tất cả")
                         .font(.custom("SF Pro Text", size: 16))
-                        .foregroundColor(Color(hex: "2F51FF"))
+                        .foregroundColor(Color(hex: "000000"))
                     
                     Image(systemName: "chevron.right")
                         .font(.caption)
-                        .foregroundColor(Color(hex: "2F51FF"))
+                        .foregroundColor(Color(hex: "000000"))
                 }
             }
             

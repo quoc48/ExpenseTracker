@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ExpenseTracker - Demo</title>
+    <title>ExpenseTracker - Code Sample Design</title>
     <style>
         * {
             margin: 0;
@@ -68,168 +68,6 @@
             z-index: 100;
         }
         
-        .report-selector {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            overflow-x: auto;
-            padding: 10px 0;
-        }
-        
-        .report-type-btn {
-            background: #f2f2f7;
-            border: none;
-            border-radius: 12px;
-            padding: 10px 16px;
-            font-size: 12px;
-            font-weight: 600;
-            color: #000;
-            cursor: pointer;
-            white-space: nowrap;
-            transition: all 0.2s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            min-width: 70px;
-        }
-        
-        .report-type-btn.active {
-            background: #007aff;
-            color: white;
-        }
-        
-        .report-icon {
-            font-size: 18px;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-        
-        .stat-card {
-            background: #f2f2f7;
-            border-radius: 12px;
-            padding: 12px;
-            text-align: center;
-        }
-        
-        .stat-icon {
-            font-size: 18px;
-            color: #007aff;
-            margin-bottom: 4px;
-        }
-        
-        .stat-value {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 2px;
-        }
-        
-        .stat-label {
-            font-size: 10px;
-            color: #8e8e93;
-        }
-        
-        .budget-progress {
-            background: white;
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 16px;
-        }
-        
-        .progress-bar {
-            height: 8px;
-            background: #e5e5ea;
-            border-radius: 4px;
-            overflow: hidden;
-            margin: 12px 0;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: #34c759;
-            transition: width 0.5s ease;
-        }
-        
-        .progress-fill.warning {
-            background: #ff9500;
-        }
-        
-        .progress-fill.danger {
-            background: #ff3b30;
-        }
-        
-        .category-chart {
-            background: white;
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 16px;
-            text-align: center;
-        }
-        
-        .pie-chart {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: conic-gradient(
-                #007aff 0deg 108deg,
-                #34c759 108deg 180deg,
-                #ff9500 180deg 252deg,
-                #ff3b30 252deg 306deg,
-                #5856d6 306deg 360deg
-            );
-            margin: 16px auto;
-        }
-        
-        .chart-legend {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin-top: 16px;
-        }
-        
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 12px;
-        }
-        
-        .legend-color {
-            width: 12px;
-            height: 12px;
-            border-radius: 2px;
-        }
-        
-        .date-filter {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 16px;
-            overflow-x: auto;
-            padding: 8px 0;
-        }
-        
-        .date-btn {
-            background: #f2f2f7;
-            border: none;
-            border-radius: 20px;
-            padding: 8px 16px;
-            font-size: 12px;
-            font-weight: 500;
-            cursor: pointer;
-            white-space: nowrap;
-            transition: all 0.2s;
-        }
-        
-        .date-btn.active {
-            background: #007aff;
-            color: white;
-        }
-        
         .tab-item {
             display: flex;
             flex-direction: column;
@@ -249,165 +87,9 @@
             margin-bottom: 4px;
         }
         
-        .header {
-            font-size: 34px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #000;
+        .hidden { 
+            display: none; 
         }
-        
-        .summary-card {
-            background: #007aff;
-            color: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-        }
-        
-        .summary-amount {
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        .summary-subtitle {
-            opacity: 0.8;
-            font-size: 14px;
-        }
-        
-        .filter-chips {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 20px;
-            overflow-x: auto;
-            padding-bottom: 5px;
-        }
-        
-        .chip {
-            background: #e5e5e5;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            white-space: nowrap;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        
-        .chip.active {
-            background: #007aff;
-            color: white;
-        }
-        
-        .expense-item {
-            background: white;
-            padding: 16px;
-            border-radius: 12px;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        
-        .expense-icon {
-            width: 40px;
-            height: 40px;
-            background: #f0f8ff;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            margin-right: 12px;
-        }
-        
-        .expense-details {
-            flex: 1;
-        }
-        
-        .expense-title {
-            font-weight: 600;
-            font-size: 16px;
-            margin-bottom: 2px;
-        }
-        
-        .expense-category {
-            color: #8e8e93;
-            font-size: 14px;
-        }
-        
-        .expense-amount {
-            font-weight: 600;
-            font-size: 16px;
-            color: #000;
-        }
-        
-        .add-button {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            width: 56px;
-            height: 56px;
-            background: #007aff;
-            border-radius: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            box-shadow: 0 4px 12px rgba(0,122,255,0.3);
-            cursor: pointer;
-            border: none;
-        }
-        
-        .section-title {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            margin-top: 16px;
-        }
-        
-        .category-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-        
-        .category-card {
-            background: white;
-            padding: 16px;
-            border-radius: 12px;
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.2s;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        
-        .category-card:hover {
-            transform: scale(1.02);
-        }
-        
-        .category-card-icon {
-            font-size: 32px;
-            margin-bottom: 8px;
-        }
-        
-        .category-card-name {
-            font-weight: 500;
-            font-size: 14px;
-        }
-        
-        .category-card-badge {
-            background: #e3f2fd;
-            color: #1976d2;
-            font-size: 10px;
-            padding: 2px 6px;
-            border-radius: 4px;
-            margin-top: 4px;
-            display: inline-block;
-        }
-        
-        .hidden { display: none; }
         
         .auth-container {
             padding: 40px 20px;
@@ -465,188 +147,387 @@
             font-size: 14px;
         }
         
-        /* Dashboard Styles */
-        .dashboard-header {
-            background: #2C2C2C;
-            color: white;
-            padding: 16px;
+        /* Dashboard Styles Based on Code Samples */
+        
+        /* Header Section - BudgetSummarySection.tsx */
+        .budget-summary-card {
+            width: 100%;
+            background: #2c2c2c;
             border-radius: 8px;
-            margin-bottom: 24px;
+            border: none;
+            margin-bottom: 12px;
         }
         
-        .month-info {
+        .budget-summary-content {
+            padding: 16px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .budget-header {
+            display: flex;
             align-items: center;
-            margin-bottom: 16px;
-        }
-        
-        .month-label {
-            font-size: 18px;
-            font-weight: 600;
-        }
-        
-        .nav-hint {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.8);
-        }
-        
-        .monthly-total {
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-        
-        .budget-progress-section {
-            margin-top: 16px;
-        }
-        
-        .budget-info {
-            display: flex;
             justify-content: space-between;
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 4px;
+        }
+        
+        .budget-month {
+            font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
+            color: #f2f2f2;
+            font-size: 16px;
+            letter-spacing: -0.17px;
+            line-height: normal;
+        }
+        
+        .budget-nav {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            color: #f2f2f2;
+            cursor: pointer;
+            font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            letter-spacing: -0.17px;
+        }
+        
+        .budget-total {
+            color: #f2f2f2;
+            font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 600;
+            font-size: 32px;
+            letter-spacing: -0.17px;
+            line-height: normal;
+        }
+        
+        .budget-progress-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .budget-label {
+            font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
+            color: #f2f2f2;
+            font-size: 16px;
+            letter-spacing: -0.17px;
+        }
+        
+        .budget-percentage {
+            font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
+            color: #f2f2f2;
+            font-size: 16px;
+            letter-spacing: -0.17px;
         }
         
         .progress-bar {
-            height: 8px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 4px;
+            width: 100%;
+            height: 16px;
+            background: #d9d9d9;
+            border-radius: 100px;
             overflow: hidden;
         }
         
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #2F51FF 0%, #0E33F3 100%);
-            border-radius: 4px;
+            border-radius: 64px;
+            box-shadow: 0px 6px 24px rgba(18, 98, 251, 0.32);
+            background: linear-gradient(225deg, rgba(47, 81, 255, 1) 0%, rgba(14, 51, 243, 1) 100%);
+            width: 66.26%;
         }
         
-        .today-stats, .category-highlight, .recent-transactions {
+        /* Daily Stats Section - DailyStatsSection.tsx */
+        .daily-stats-card {
+            width: 100%;
             background: white;
-            padding: 16px;
             border-radius: 8px;
-            margin-bottom: 24px;
+            margin-bottom: 12px;
         }
         
-        .section-header-today, .section-header-category, .section-header-transactions {
+        .daily-stats-content {
+            padding: 19px;
+        }
+        
+        .daily-header {
             display: flex;
+            width: 100%;
+            align-items: flex-start;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
+            margin-bottom: 19px;
         }
         
-        .section-header-today h2, .section-header-category h2, .section-header-transactions h2 {
-            font-size: 24px;
-            font-weight: 500;
-            color: #000000;
-            margin: 0;
-        }
-        
-        .nav-link {
+        .daily-title {
+            font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
+            color: #303030;
             font-size: 16px;
-            color: #2F51FF;
-            display: flex;
-            align-items: center;
-            gap: 4px;
+            letter-spacing: -0.17px;
+            line-height: normal;
+            white-space: nowrap;
         }
         
-        .today-amount {
-            font-size: 32px;
-            font-weight: bold;
-            color: #000000;
-        }
-        
-        .top-category {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .category-icon {
-            font-size: 20px;
-            width: 40px;
-            height: 40px;
-            background: #F5F6F7;
-            border-radius: 8px;
-            display: flex;
+        .daily-nav {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
+            gap: 2px;
         }
         
-        .category-info {
-            flex: 1;
+        .daily-nav-text {
+            font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
+            color: #303030;
+            font-size: 16px;
+            letter-spacing: -0.17px;
+            line-height: normal;
+            white-space: nowrap;
         }
         
-        .category-name {
-            font-size: 18px;
+        .daily-amount {
+            color: #1e1e1e;
+            font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 600;
-            color: #000000;
+            font-size: 32px;
+            letter-spacing: -0.17px;
+            line-height: normal;
+            white-space: nowrap;
         }
         
-        .category-desc {
-            font-size: 14px;
-            color: #666;
+        /* Featured Items Section - FeaturedItemsSection.tsx */
+        .featured-items-card {
+            width: 100%;
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 12px;
         }
         
-        .category-amount {
-            font-size: 20px;
-            font-weight: bold;
-            color: #000000;
+        .featured-items-content {
+            padding: 17px;
         }
         
-        .transaction-list {
+        .featured-top-row {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+        }
+        
+        .featured-icon-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .featured-icon-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            background: #2c2c2c;
+            border-radius: 32px;
+            border: 1px solid;
+        }
+        
+        .featured-star {
+            width: 20px;
+            height: 20px;
+            color: white;
+        }
+        
+        .featured-category-name {
+            font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
+            color: #303030;
+            font-size: 16px;
+            letter-spacing: -0.17px;
+            line-height: normal;
+            white-space: nowrap;
+        }
+        
+        .featured-detail-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+            cursor: pointer;
+        }
+        
+        .featured-detail-text {
+            font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
+            color: #303030;
+            font-size: 16px;
+            letter-spacing: -0.17px;
+            line-height: normal;
+            white-space: nowrap;
+        }
+        
+        .featured-chevron {
+            width: 20px;
+            height: 20px;
+            color: #303030;
+        }
+        
+        .featured-amount {
+            color: #1e1e1e;
+            font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 600;
+            font-size: 32px;
+            letter-spacing: -0.17px;
+            line-height: normal;
+            white-space: nowrap;
+        }
+        
+        /* Overview Section - OverviewSection.tsx */
+        .overview-section {
             display: flex;
             flex-direction: column;
+            width: 100%;
+            align-items: flex-start;
             gap: 12px;
         }
         
-        .transaction-item {
+        .overview-header {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 4px 0;
+            justify-content: space-between;
+            width: 100%;
         }
         
-        .transaction-icon {
-            font-size: 18px;
-            width: 40px;
-            height: 40px;
-            background: #F5F6F7;
-            border-radius: 8px;
-            display: flex;
+        .overview-title {
+            font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 700;
+            color: black;
+            font-size: 20px;
+            letter-spacing: -0.17px;
+            line-height: normal;
+            white-space: nowrap;
+        }
+        
+        .overview-nav {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
+            gap: 2px;
+            cursor: pointer;
         }
         
-        .transaction-info {
+        .overview-nav-text {
+            font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
+            color: #303030;
+            font-size: 16px;
+            letter-spacing: -0.17px;
+            line-height: normal;
+            white-space: nowrap;
+        }
+        
+        .expense-item-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 12px;
+            width: 100%;
+            background: #f5f5f5;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 0;
+        }
+        
+        .expense-content {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            padding: 0;
+        }
+        
+        .expense-icon-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            background: #2c2c2c;
+            border-radius: 32px;
+            overflow: hidden;
+            border: 1px solid;
+        }
+        
+        .expense-icon {
+            width: 20px;
+            height: 20px;
+            color: white;
+        }
+        
+        .expense-details {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
             flex: 1;
         }
         
-        .transaction-desc {
+        .expense-main-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+        }
+        
+        .expense-name {
+            flex: 1;
+            font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
+            color: #1e1e1e;
             font-size: 16px;
-            font-weight: 500;
-            color: #000000;
+            letter-spacing: -0.17px;
+            line-height: normal;
         }
         
-        .transaction-category {
-            font-size: 14px;
-            color: #666;
-        }
-        
-        .transaction-meta {
-            text-align: right;
-        }
-        
-        .transaction-amount {
-            font-size: 16px;
+        .expense-amount {
+            font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 600;
-            color: #000000;
+            color: #1e1e1e;
+            font-size: 16px;
+            letter-spacing: -0.17px;
+            line-height: normal;
+            white-space: nowrap;
         }
         
-        .transaction-time {
+        .expense-date {
+            font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
+            color: #5a5a5a;
             font-size: 12px;
-            color: #666;
+            letter-spacing: -0.17px;
+            line-height: normal;
+        }
+        
+        .add-button {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 56px;
+            height: 56px;
+            background: #007aff;
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(0,122,255,0.3);
+            cursor: pointer;
+            border: none;
+        }
+        
+        .section-gap {
+            margin-bottom: 12px;
         }
     </style>
 </head>
@@ -685,384 +566,122 @@
             
             <!-- Main App Screen -->
             <div id="main-screen" class="content">
-                <div class="header">Chi Tiêu</div>
+                <div style="font-size: 34px; font-weight: bold; margin-bottom: 20px; color: #000;">Chi Tiêu</div>
                 
-                <!-- Dashboard Layout -->
-                <!-- 1. Header Section (Monthly Overview) -->
-                <div class="dashboard-header">
-                    <div class="month-info">
-                        <div class="month-label">Tháng 8</div>
-                        <div class="nav-hint">Tháng trước ➤</div>
-                    </div>
-                    <div class="monthly-total">₫1.250.000</div>
-                    <div class="budget-progress-section">
-                        <div class="budget-info">
-                            <span>So với ngân sách</span>
-                            <span>60%</span>
+                <!-- 1. Budget Summary Section (Header) -->
+                <div class="budget-summary-card">
+                    <div class="budget-summary-content">
+                        <div class="budget-header">
+                            <div class="budget-month">Tháng 8</div>
+                            <div class="budget-nav">
+                                <span>Tháng trước</span>
+                                <span>➤</span>
+                            </div>
                         </div>
+                        
+                        <div class="budget-total">16,500,000 đ</div>
+                        
+                        <div class="budget-progress-info">
+                            <div class="budget-label">So với ngân sách</div>
+                            <div class="budget-percentage">60%</div>
+                        </div>
+                        
                         <div class="progress-bar">
-                            <div class="progress-fill" style="width: 60%;"></div>
+                            <div class="progress-fill"></div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- 2. Today Stats Section -->
-                <div class="today-stats">
-                    <div class="section-header-today">
-                        <h2>Hôm nay</h2>
-                        <div class="nav-link">Hôm qua ➤</div>
-                    </div>
-                    <div class="today-amount">₫45.000</div>
-                </div>
-                
-                <!-- 3. Category Highlight Section -->
-                <div class="category-highlight">
-                    <div class="section-header-category">
-                        <h2>Danh mục nổi bật</h2>
-                        <div class="nav-link">Chi tiết ➤</div>
-                    </div>
-                    <div class="top-category">
-                        <div class="category-icon">🍜</div>
-                        <div class="category-info">
-                            <div class="category-name">Thực phẩm</div>
-                            <div class="category-desc">Danh mục chi nhiều nhất</div>
-                        </div>
-                        <div class="category-amount">₫485.000</div>
-                    </div>
-                </div>
-                
-                <!-- 4. Recent Transactions Section -->
-                <div class="recent-transactions">
-                    <div class="section-header-transactions">
-                        <h2>Chi tiêu gần đây</h2>
-                        <div class="nav-link">Tất cả ➤</div>
-                    </div>
-                    <div class="transaction-list">
-                        <div class="transaction-item">
-                            <div class="transaction-icon">🍜</div>
-                            <div class="transaction-info">
-                                <div class="transaction-desc">Cơm trưa tại nhà hàng</div>
-                                <div class="transaction-category">Thực phẩm</div>
-                            </div>
-                            <div class="transaction-meta">
-                                <div class="transaction-amount">₫45.000</div>
-                                <div class="transaction-time">14:30</div>
+                <!-- 2. Daily Stats Section -->
+                <div class="daily-stats-card section-gap">
+                    <div class="daily-stats-content">
+                        <div class="daily-header">
+                            <div class="daily-title">Hôm nay</div>
+                            <div class="daily-nav">
+                                <div class="daily-nav-text">Hôm qua</div>
+                                <span style="width: 20px; height: 20px;">➤</span>
                             </div>
                         </div>
-                        <div class="transaction-item">
-                            <div class="transaction-icon">🚌</div>
-                            <div class="transaction-info">
-                                <div class="transaction-desc">Xe bus đi làm</div>
-                                <div class="transaction-category">Giao thông</div>
-                            </div>
-                            <div class="transaction-meta">
-                                <div class="transaction-amount">₫25.000</div>
-                                <div class="transaction-time">Hôm qua</div>
-                            </div>
-                        </div>
-                        <div class="transaction-item">
-                            <div class="transaction-icon">👔</div>
-                            <div class="transaction-info">
-                                <div class="transaction-desc">Áo sơ mi mới</div>
-                                <div class="transaction-category">Thời trang</div>
-                            </div>
-                            <div class="transaction-meta">
-                                <div class="transaction-amount">₫150.000</div>
-                                <div class="transaction-time">Hôm qua</div>
-                            </div>
-                        </div>
+                        
+                        <div class="daily-amount">2,344,000 đ</div>
                     </div>
                 </div>
                 
-            
-            <!-- Category Screen -->
-            <div id="category-screen" class="content hidden">
-                <div class="header">Chọn Danh Mục</div>
-                
-                <div class="form-group">
-                    <input type="text" class="form-input" placeholder="🔍 Tìm kiếm danh mục...">
-                </div>
-                
-                <div class="category-grid">
-                    <div class="category-card" onclick="selectCategory('🍜', 'Thực phẩm')">
-                        <div class="category-card-icon">🍜</div>
-                        <div class="category-card-name">Thực phẩm</div>
-                        <div class="category-card-badge">Mặc định</div>
-                    </div>
-                    <div class="category-card" onclick="selectCategory('🛒', 'Tạp hoá')">
-                        <div class="category-card-icon">🛒</div>
-                        <div class="category-card-name">Tạp hoá</div>
-                        <div class="category-card-badge">Mặc định</div>
-                    </div>
-                    <div class="category-card" onclick="selectCategory('👔', 'Thời trang')">
-                        <div class="category-card-icon">👔</div>
-                        <div class="category-card-name">Thời trang</div>
-                        <div class="category-card-badge">Mặc định</div>
-                    </div>
-                    <div class="category-card" onclick="selectCategory('📚', 'Giáo dục')">
-                        <div class="category-card-icon">📚</div>
-                        <div class="category-card-name">Giáo dục</div>
-                        <div class="category-card-badge">Mặc định</div>
-                    </div>
-                    <div class="category-card" onclick="selectCategory('🏠', 'Tiền nhà')">
-                        <div class="category-card-icon">🏠</div>
-                        <div class="category-card-name">Tiền nhà</div>
-                        <div class="category-card-badge">Mặc định</div>
-                    </div>
-                    <div class="category-card" onclick="selectCategory('🚌', 'Giao thông')">
-                        <div class="category-card-icon">🚌</div>
-                        <div class="category-card-name">Giao thông</div>
-                        <div class="category-card-badge">Mặc định</div>
-                    </div>
-                    <div class="category-card" onclick="selectCategory('⚕️', 'Y tế')">
-                        <div class="category-card-icon">⚕️</div>
-                        <div class="category-card-name">Y tế</div>
-                        <div class="category-card-badge">Mặc định</div>
-                    </div>
-                    <div class="category-card" onclick="selectCategory('🎮', 'Giải trí')">
-                        <div class="category-card-icon">🎮</div>
-                        <div class="category-card-name">Giải trí</div>
-                        <div class="category-card-badge">Mặc định</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Reports Screen -->
-            <div id="reports-screen" class="content hidden">
-                <div class="header">Báo Cáo</div>
-                
-                <!-- Report Type Selector -->
-                <div class="report-selector">
-                    <button class="report-type-btn active" onclick="showReportType('dashboard')">
-                        <div class="report-icon">📊</div>
-                        <div>Tổng Quan</div>
-                    </button>
-                    <button class="report-type-btn" onclick="showReportType('daily')">
-                        <div class="report-icon">📅</div>
-                        <div>Hôm Nay</div>
-                    </button>
-                    <button class="report-type-btn" onclick="showReportType('budget')">
-                        <div class="report-icon">💰</div>
-                        <div>Ngân Sách</div>
-                    </button>
-                    <button class="report-type-btn" onclick="showReportType('analytics')">
-                        <div class="report-icon">🥧</div>
-                        <div>Phân Tích</div>
-                    </button>
-                </div>
-                
-                <!-- Dashboard Report Content -->
-                <div id="dashboard-report" class="report-content">
-                    <!-- Quick Stats -->
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <div class="stat-icon">💳</div>
-                            <div class="stat-value">₫2.750.000</div>
-                            <div class="stat-label">Tổng Chi</div>
+                <!-- 3. Featured Items Section (Category) -->
+                <div class="featured-items-card section-gap">
+                    <div class="featured-items-content">
+                        <div class="featured-top-row">
+                            <div class="featured-icon-name">
+                                <div class="featured-icon-circle">
+                                    <div class="featured-star">⭐</div>
+                                </div>
+                                <div class="featured-category-name">Thực phẩm</div>
+                            </div>
+                            
+                            <div class="featured-detail-link">
+                                <div class="featured-detail-text">Chi tiết</div>
+                                <div class="featured-chevron">➤</div>
+                            </div>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-icon">📋</div>
-                            <div class="stat-value">18</div>
-                            <div class="stat-label">Giao Dịch</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon">📅</div>
-                            <div class="stat-value">₫92K</div>
-                            <div class="stat-label">TB/Ngày</div>
+                        
+                        <div class="featured-amount">5,857,231 đ</div>
+                    </div>
+                </div>
+                
+                <!-- 4. Overview Section (Recent Transactions) -->
+                <div class="overview-section">
+                    <div class="overview-header">
+                        <h2 class="overview-title">Chi tiêu gần đây</h2>
+                        <div class="overview-nav">
+                            <span class="overview-nav-text">Tất cả</span>
+                            <span style="width: 20px; height: 20px;">➤</span>
                         </div>
                     </div>
                     
-                    <!-- Date Filter -->
-                    <div class="date-filter">
-                        <button class="date-btn">Hôm nay</button>
-                        <button class="date-btn active">Tháng này</button>
-                        <button class="date-btn">3 tháng</button>
-                        <button class="date-btn">Năm này</button>
-                        <button class="date-btn">Tùy chỉnh</button>
-                    </div>
-                    
-                    <!-- Top Categories -->
-                    <div class="expense-section">
-                        <div class="section-header">
-                            <h3>Top Danh Mục Chi Tiêu</h3>
-                        </div>
-                        <div class="expense-item">
-                            <div class="expense-icon">🍜</div>
+                    <div class="expense-item-card">
+                        <div class="expense-content">
+                            <div class="expense-icon-circle">
+                                <div class="expense-icon">⭐</div>
+                            </div>
+                            
                             <div class="expense-details">
-                                <div class="expense-desc">Thực phẩm</div>
-                                <div class="expense-meta">8 giao dịch • 45.2%</div>
+                                <div class="expense-main-row">
+                                    <div class="expense-name">Bánh canh cá lóc</div>
+                                    <div class="expense-amount">65,000 đ</div>
+                                </div>
+                                <div class="expense-date">Today</div>
                             </div>
-                            <div class="expense-amount">₫1.245.000</div>
                         </div>
-                        <div class="expense-item">
-                            <div class="expense-icon">🚌</div>
+                    </div>
+                    
+                    <div class="expense-item-card">
+                        <div class="expense-content">
+                            <div class="expense-icon-circle">
+                                <div class="expense-icon">⭐</div>
+                            </div>
+                            
                             <div class="expense-details">
-                                <div class="expense-desc">Giao thông</div>
-                                <div class="expense-meta">5 giao dịch • 18.1%</div>
+                                <div class="expense-main-row">
+                                    <div class="expense-name">Ăn sáng</div>
+                                    <div class="expense-amount">23,000 đ</div>
+                                </div>
+                                <div class="expense-date">Today</div>
                             </div>
-                            <div class="expense-amount">₫498.000</div>
                         </div>
-                        <div class="expense-item">
-                            <div class="expense-icon">🛒</div>
+                    </div>
+                    
+                    <div class="expense-item-card">
+                        <div class="expense-content">
+                            <div class="expense-icon-circle">
+                                <div class="expense-icon">⭐</div>
+                            </div>
+                            
                             <div class="expense-details">
-                                <div class="expense-desc">Tạp hoá</div>
-                                <div class="expense-meta">3 giao dịch • 14.5%</div>
-                            </div>
-                            <div class="expense-amount">₫399.000</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Daily Report Content -->
-                <div id="daily-report" class="report-content hidden">
-                    <div class="summary-card">
-                        <div class="summary-amount">₫127.500</div>
-                        <div class="summary-label">Chi Tiêu Hôm Nay</div>
-                        <div style="margin-top: 8px; font-size: 14px;">3 giao dịch</div>
-                    </div>
-                    
-                    <!-- Daily Progress -->
-                    <div class="budget-progress">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                            <span style="font-size: 14px; font-weight: 600;">So với trung bình</span>
-                            <span style="font-size: 12px; color: #34c759;">Tiết kiệm (68%)</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 68%;"></div>
-                        </div>
-                    </div>
-                    
-                    <!-- Today's Categories -->
-                    <div class="expense-section">
-                        <div class="section-header">
-                            <h3>Danh Mục Hôm Nay</h3>
-                        </div>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-                            <div style="background: #f2f2f7; border-radius: 8px; padding: 12px; text-align: center;">
-                                <div style="font-size: 20px; margin-bottom: 4px;">🍜</div>
-                                <div style="font-size: 12px; font-weight: 600;">Thực phẩm</div>
-                                <div style="font-size: 10px; color: #8e8e93;">₫85.000</div>
-                            </div>
-                            <div style="background: #f2f2f7; border-radius: 8px; padding: 12px; text-align: center;">
-                                <div style="font-size: 20px; margin-bottom: 4px;">☕</div>
-                                <div style="font-size: 12px; font-weight: 600;">Cà phê</div>
-                                <div style="font-size: 10px; color: #8e8e93;">₫42.500</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Budget Report Content -->
-                <div id="budget-report" class="report-content hidden">
-                    <div class="budget-progress">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                            <span style="font-size: 16px; font-weight: 600;">Ngân Sách Tháng</span>
-                            <span style="font-size: 14px; color: #8e8e93;">₫10.000.000</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
-                            <span style="font-size: 16px; font-weight: 600; color: #007aff;">Đã Chi</span>
-                            <span style="font-size: 14px; color: #007aff;">₫2.750.000</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 27.5%;"></div>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; margin-top: 8px;">
-                            <span style="font-size: 14px; color: #34c759;">Tốt - Trong tầm kiểm soát</span>
-                            <span style="font-size: 12px; color: #8e8e93;">27.5% sử dụng</span>
-                        </div>
-                    </div>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
-                        <div style="background: white; border-radius: 12px; padding: 16px;">
-                            <div style="font-size: 12px; color: #8e8e93; margin-bottom: 4px;">Còn Lại</div>
-                            <div style="font-size: 18px; font-weight: bold; color: #34c759;">₫7.250.000</div>
-                        </div>
-                        <div style="background: white; border-radius: 12px; padding: 16px;">
-                            <div style="font-size: 12px; color: #8e8e93; margin-bottom: 4px;">Còn 15 ngày</div>
-                            <div style="font-size: 18px; font-weight: bold; color: #007aff;">₫483K/ngày</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Budget Alerts -->
-                    <div style="background: #e3f2fd; border-radius: 8px; padding: 12px; margin-bottom: 16px;">
-                        <div style="display: flex; align-items: center; gap: 8px;">
-                            <span style="color: #007aff;">ℹ️</span>
-                            <div>
-                                <div style="font-size: 12px; font-weight: 600; color: #007aff;">Chi Tiêu Cao Hôm Nay</div>
-                                <div style="font-size: 11px; color: #007aff;">Hôm nay bạn chi ₫127.500, cao hơn trung bình</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Analytics Report Content -->
-                <div id="analytics-report" class="report-content hidden">
-                    <div class="category-chart">
-                        <h3 style="margin-bottom: 16px;">Biểu Đồ Chi Tiêu</h3>
-                        <div class="pie-chart"></div>
-                        <div class="chart-legend">
-                            <div class="legend-item">
-                                <div class="legend-color" style="background: #007aff;"></div>
-                                <span>Thực phẩm (45.2%)</span>
-                            </div>
-                            <div class="legend-item">
-                                <div class="legend-color" style="background: #34c759;"></div>
-                                <span>Giao thông (18.1%)</span>
-                            </div>
-                            <div class="legend-item">
-                                <div class="legend-color" style="background: #ff9500;"></div>
-                                <span>Tạp hoá (14.5%)</span>
-                            </div>
-                            <div class="legend-item">
-                                <div class="legend-color" style="background: #ff3b30;"></div>
-                                <span>Y tế (12.0%)</span>
-                            </div>
-                            <div class="legend-item">
-                                <div class="legend-color" style="background: #5856d6;"></div>
-                                <span>Giải trí (10.2%)</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Category Rankings -->
-                    <div class="expense-section">
-                        <div class="section-header">
-                            <h3>Xếp Hạng Danh Mục</h3>
-                        </div>
-                        <div style="display: flex; align-items: center; margin-bottom: 12px;">
-                            <div style="width: 20px; text-align: center; font-weight: bold; color: #ff9500; margin-right: 12px;">1</div>
-                            <div style="font-size: 20px; margin-right: 12px;">🍜</div>
-                            <div style="flex: 1;">
-                                <div style="font-size: 14px; font-weight: 600;">Thực phẩm</div>
-                                <div style="font-size: 12px; color: #8e8e93;">8 giao dịch</div>
-                            </div>
-                            <div style="text-align: right;">
-                                <div style="font-size: 14px; font-weight: 600;">₫1.245.000</div>
-                                <div style="font-size: 12px; color: #007aff;">45.2%</div>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: center; margin-bottom: 12px;">
-                            <div style="width: 20px; text-align: center; font-weight: bold; color: #8e8e93; margin-right: 12px;">2</div>
-                            <div style="font-size: 20px; margin-right: 12px;">🚌</div>
-                            <div style="flex: 1;">
-                                <div style="font-size: 14px; font-weight: 600;">Giao thông</div>
-                                <div style="font-size: 12px; color: #8e8e93;">5 giao dịch</div>
-                            </div>
-                            <div style="text-align: right;">
-                                <div style="font-size: 14px; font-weight: 600;">₫498.000</div>
-                                <div style="font-size: 12px; color: #007aff;">18.1%</div>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: center;">
-                            <div style="width: 20px; text-align: center; font-weight: bold; color: #ff9500; margin-right: 12px;">3</div>
-                            <div style="font-size: 20px; margin-right: 12px;">🛒</div>
-                            <div style="flex: 1;">
-                                <div style="font-size: 14px; font-weight: 600;">Tạp hoá</div>
-                                <div style="font-size: 12px; color: #8e8e93;">3 giao dịch</div>
-                            </div>
-                            <div style="text-align: right;">
-                                <div style="font-size: 14px; font-weight: 600;">₫399.000</div>
-                                <div style="font-size: 12px; color: #007aff;">14.5%</div>
+                                <div class="expense-main-row">
+                                    <div class="expense-name">Nạp 3G</div>
+                                    <div class="expense-amount">8,000 đ</div>
+                                </div>
+                                <div class="expense-date">Today</div>
                             </div>
                         </div>
                     </div>
@@ -1075,11 +694,11 @@
                     <div class="tab-icon">💳</div>
                     <div>Chi Tiêu</div>
                 </a>
-                <a href="#" class="tab-item" onclick="showScreen('reports')">
+                <a href="#" class="tab-item">
                     <div class="tab-icon">📊</div>
                     <div>Báo Cáo</div>
                 </a>
-                <a href="#" class="tab-item" onclick="showScreen('category')">
+                <a href="#" class="tab-item">
                     <div class="tab-icon">🏷️</div>
                     <div>Danh Mục</div>
                 </a>
@@ -1095,13 +714,10 @@
     </div>
     
     <div style="text-align: center; margin-top: 20px; color: #8e8e93;">
-        <h3>🎯 ExpenseTracker Demo</h3>
-        <p>This demonstrates your fully functional Vietnamese expense tracking app!</p>
+        <h3>🎯 ExpenseTracker Demo - Code Sample Implementation</h3>
+        <p>Exact implementation of code sample designs with proper typography and spacing</p>
         <p style="margin-top: 10px;">
-            ✅ Vietnamese UI | ✅ VND Currency | ✅ Real Categories | ✅ Complete Workflow | ✅ Advanced Reporting
-        </p>
-        <p style="margin-top: 8px; font-size: 14px;">
-            📊 Daily Summary | 💰 Budget Tracking | 🥧 Category Analytics | 📅 Date Filtering
+            ✅ SF Pro Text | ✅ Code Sample Specs | ✅ Proper Letter Spacing | ✅ Exact Colors
         </p>
     </div>
 
@@ -1111,37 +727,6 @@
             document.getElementById('main-screen').classList.remove('hidden');
             document.getElementById('tab-bar').classList.remove('hidden');
             document.getElementById('add-button').classList.remove('hidden');
-        }
-        
-        function showScreen(screenName) {
-            // Hide all screens
-            document.getElementById('main-screen').classList.add('hidden');
-            document.getElementById('category-screen').classList.add('hidden');
-            document.getElementById('reports-screen').classList.add('hidden');
-            
-            // Show selected screen
-            document.getElementById(screenName + '-screen').classList.remove('hidden');
-            
-            // Update tab active state
-            document.querySelectorAll('.tab-item').forEach(tab => tab.classList.remove('active'));
-            event.target.closest('.tab-item').classList.add('active');
-        }
-        
-        function showReportType(reportType) {
-            // Hide all report contents
-            document.querySelectorAll('.report-content').forEach(content => content.classList.add('hidden'));
-            
-            // Show selected report content
-            document.getElementById(reportType + '-report').classList.remove('hidden');
-            
-            // Update button active state
-            document.querySelectorAll('.report-type-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.closest('.report-type-btn').classList.add('active');
-        }
-        
-        function selectCategory(icon, name) {
-            alert(`Đã chọn danh mục: ${icon} ${name}`);
-            showScreen('main');
         }
     </script>
 </body>
