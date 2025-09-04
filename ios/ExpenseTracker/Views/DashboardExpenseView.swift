@@ -10,6 +10,7 @@ struct DashboardExpenseView: View {
     @State private var topCategory: (name: String, icon: String, amount: Decimal)?
     @State private var recentTransactions: [Expense] = []
     @State private var showingAddExpense = false
+    @State private var showingBudgetDetail = false
     @State private var isLoading = true
     
     private let calendar = Calendar.current
@@ -63,6 +64,9 @@ struct DashboardExpenseView: View {
             .sheet(isPresented: $showingAddExpense) {
                 AddExpenseView()
             }
+            .sheet(isPresented: $showingBudgetDetail) {
+                BudgetDetailView()
+            }
             .task {
                 await loadDashboardData()
             }
@@ -86,7 +90,9 @@ struct DashboardExpenseView: View {
                     
                     Spacer()
                     
-                    Button(action: {}) {
+                    Button(action: { 
+                        showingBudgetDetail = true 
+                    }) {
                         HStack(spacing: 4) {
                             Text("Tháng trước")
                                 .font(.custom("SF Pro Text", size: 14))
@@ -115,7 +121,9 @@ struct DashboardExpenseView: View {
                     
                     Spacer()
                     
-                    Text("60%")
+                    let monthlyBudget: Decimal = 10_000_000 // ₫10M monthly budget
+                    let percentage = min(Double(monthlyTotal / monthlyBudget) * 100, 100)
+                    Text("\(Int(percentage))%")
                         .font(.custom("SF Pro Text", size: 14))
                         .foregroundColor(.white)
                 }
@@ -123,25 +131,30 @@ struct DashboardExpenseView: View {
             .padding(16)
             .background(Color(hex: "2C2C2C"))
             
-            // Blue progress chart section
-            HStack {
-                Rectangle()
-                    .frame(height: 20)
-                    .foregroundColor(.blue)
-                
-                Rectangle()
-                    .frame(height: 20)
-                    .foregroundColor(.blue.opacity(0.7))
-                
-                Rectangle()
-                    .frame(height: 20)
-                    .foregroundColor(.blue.opacity(0.5))
-                
-                Rectangle()
-                    .frame(height: 20)
-                    .foregroundColor(.blue.opacity(0.3))
+            // Progress bar section
+            let monthlyBudget: Decimal = 10_000_000
+            let progressPercentage = min(Double(monthlyTotal / monthlyBudget), 1.0)
+            
+            GeometryReader { geometry in
+                ZStack(alignment: .leading) {
+                    Rectangle()
+                        .frame(height: 8)
+                        .foregroundColor(.white.opacity(0.2))
+                        .cornerRadius(4)
+                    
+                    Rectangle()
+                        .frame(width: geometry.size.width * progressPercentage, height: 8)
+                        .fill(LinearGradient(
+                            gradient: Gradient(colors: [Color(hex: "2F51FF"), Color(hex: "0E33F3")]),
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        ))
+                        .cornerRadius(4)
+                }
             }
-            .background(Color.white.opacity(0.1))
+            .frame(height: 8)
+            .padding(.horizontal, 16)
+            .padding(.bottom, 12)
         }
         .frame(maxWidth: .infinity)
         .frame(height: 175)
