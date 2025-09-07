@@ -11,6 +11,7 @@ struct DashboardExpenseView: View {
     @State private var recentTransactions: [Expense] = []
     @State private var showingAddExpense = false
     @State private var showingBudgetDetail = false
+    @State private var showingDailyStatsDetail = false
     @State private var isLoading = true
     
     private let calendar = Calendar.current
@@ -66,6 +67,9 @@ struct DashboardExpenseView: View {
             }
             .sheet(isPresented: $showingBudgetDetail) {
                 BudgetDetailView()
+            }
+            .sheet(isPresented: $showingDailyStatsDetail) {
+                DailyStatsDetailView()
             }
             .task {
                 await loadDashboardData()
@@ -174,9 +178,11 @@ struct DashboardExpenseView: View {
                 
                 Spacer()
                 
-                Button(action: {}) {
+                Button(action: { 
+                    showingDailyStatsDetail = true 
+                }) {
                     HStack(spacing: 4) {
-                        Text("Hôm qua")
+                        Text("Chi tiết")
                             .font(.custom("SF Pro Text", size: 14))
                             .foregroundColor(Color(hex: "000000"))
                         
